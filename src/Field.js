@@ -44,18 +44,18 @@ const Field = ({
   };
 
   return (
-    <div className="field">
+    <div className="field-container">
       <div className="field-header">
         <div className="field-name">
           <label>
             Name:
-            <input type="text" value={name} onChange={handleNameChange} />
+            <input className="field-input" type="text" value={name} onChange={handleNameChange} />
           </label>
         </div>
         <div className="field-type">
-          <label>
+          <label className="field-label">
             Type:
-            <select value={type} onChange={handleTypeChange}>
+            <select className="field-select" value={type} onChange={handleTypeChange}>
               <option value="String">String</option>
               <option value="Number">Number</option>
               <option value="Boolean">Boolean</option>
@@ -64,18 +64,18 @@ const Field = ({
           </label>
         </div>
         <div className="field-actions">
-          <button onClick={onDelete}>Delete</button>
+          <button className="subfield-delete-btn" onClick={onDelete}>Delete</button>
           {type === "Object" && (
             <button onClick={handleAddSubfield}>Add Subfield</button>
           )}
         </div>
       </div>
       {type === "Object" && (
-        <div className="subfields">
+        <div className="subfield-container">
           {value.fields &&
             value.fields.map((subfield, subfieldIndex) => (
               <div className="subfield" key={subfieldIndex}>
-                <Field
+                <Field 
                   name={subfield.name}
                   type={subfield.type}
                   value={subfield}
